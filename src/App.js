@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import LeftBox from './components/LeftBox';
+import RightBox from './components/RightBox';
+import Data from './object'
 
 function App() {
+  const [quantity, setQuantity] = useState({
+    product1: 0,
+    product2: 0,
+    product3: 0
+  })
+  const [total, setTotal] = useState(0);
+  const Products = Data
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='container'>
+        <LeftBox Products={Products} quantity={quantity} setQuantity={setQuantity} total={total} setTotal={setTotal} />
+        <RightBox Products={Products} quantity={quantity} total={total} />
+      </div>
+    </>
   );
 }
 
